@@ -106,11 +106,14 @@ def score(stripe1, stripe2):
 
 def best_match(unscram, scram):
     """
-    Match the left and right stripes of unscram with every Shred
+    Match the leftmost and rightmost stripes of unscram with every Shred
     in scram to find the best match.
     
+    unscram is a deque of Shreds.
+    scram is a dict of Shreds.
+    
     scores is dict:
-        key = 2-tuple of index of scram (a dict of Shreds)
+        key = 2-tuple of key of scram and unscram side it is matching
         value = score
     
     Return: 
