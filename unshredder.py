@@ -29,6 +29,7 @@ class Shred(object):
         """
         Return list of pixels along x coordinate, where y coordinate
         ranges from 0 to image height.
+        
         """
         pixels = []
         for y in range(self.height):
@@ -43,6 +44,7 @@ class Shred(object):
         
         Return list of avg pixel values, where y coordinate ranges
         from 0 to image height.
+        
         """
         cols = []     # list of lists of 1-pixel columns
         for n in range(num_pixels):
@@ -71,6 +73,7 @@ def split(image):
     Split image into dict of Shred objects.
         Key: leftmost x coordinate
         Value: Shred object
+        
     """
     shred_width = 32
     image_width, image_height = image.size
@@ -90,6 +93,7 @@ def score(stripe1, stripe2):
     (0 is perfect match.)
     
     Return score.
+    
     """
     scr = 0
     count = 0
@@ -112,6 +116,7 @@ def best_match(unscram, scram):
     Return: 
         the index of the best match
         side of the unscram deque to which the best match should be added.
+        
     """
     leftmost = unscram[0].left_stripe
     rightmost = unscram[-1].right_stripe
@@ -131,6 +136,7 @@ def unshred(shreds_dict):
     Loop until all Shreds from shreds_dict have been added to image. 
     
     Return the ordered deque of shreds. 
+    
     """
     scram = shreds_dict
     unscram = deque([scram[0]])
