@@ -25,7 +25,7 @@ class Shred(object):
         self.left_stripe = self._stripe(0, 4)
         self.right_stripe = self._stripe(self.width - 4, 4)
     
-    def _edge(self, x):
+    def _column(self, x):
         """
         Return list of pixels along x coordinate, where y coordinate
         ranges from 0 to image height.
@@ -46,7 +46,7 @@ class Shred(object):
         """
         cols = []     # list of lists of 1-pixel columns
         for n in range(num_pixels):
-            cols.append(self._edge(start_pixel + n))
+            cols.append(self._column(start_pixel + n))
         stripe = []
         avg = ()
         for pixels in zip(*cols):
