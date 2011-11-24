@@ -22,10 +22,10 @@ class Shred(object):
         self.height = image.size[1]
         self.data = image.load()
         # A stripe is multiple 1 pixel cols, averaged together
-        self.left_stripe = self.__stripe(0, 4)
-        self.right_stripe = self.__stripe(self.width - 4, 4)
+        self.left_stripe = self._stripe(0, 4)
+        self.right_stripe = self._stripe(self.width - 4, 4)
     
-    def __edge(self, x):
+    def _edge(self, x):
         """
         Return list of pixels along x coordinate, where y coordinate
         ranges from 0 to image height.
@@ -36,7 +36,7 @@ class Shred(object):
             pixels.append(p)
         return pixels
     
-    def __stripe(self, start_pixel, num_pixels):
+    def _stripe(self, start_pixel, num_pixels):
         """
         Get lists of pixels along multiple x coordinates.  Average
         the pixels that have the same y coordinate.
@@ -46,7 +46,7 @@ class Shred(object):
         """
         cols = []     # list of lists of 1-pixel columns
         for n in range(num_pixels):
-            cols.append(self.__edge(start_pixel + n))
+            cols.append(self._edge(start_pixel + n))
         stripe = []
         avg = ()
         for pixels in zip(*cols):
